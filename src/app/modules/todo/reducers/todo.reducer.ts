@@ -30,12 +30,12 @@ function deleteTodo(todos, action) {
 
 function updateTodo(todos, action) {
   return todos.map((todo) => {
-    if (todo.id !== action.payload.currentItem.id) {
+    if (todo.id !== action.payload.id) {
       return todo
     }
     return {
       ...todo,
-      ...action.payload.updatedTodo
+      ...action.payload
     }
   })
 }

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -21,6 +22,7 @@ import { todoReducer } from './modules/todo/reducers/todo.reducer';
     appRoutes,
     CoreModule,
     HttpClientModule,
+    ModalModule.forRoot(),
     StoreModule.forRoot({
       todos: todoReducer
     }),

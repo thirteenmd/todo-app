@@ -69,7 +69,7 @@ export class TodoEffects {
   updateTodo$: Observable<Action> = this.actions$.pipe(
     ofType<EditTodo>(TodoActionTypes.EditTodo),
     mergeMap(action =>
-      this.jsonServer.httpRequest('PUT', '/todo/' + action.payload.id, action.payload.updatedTodo).pipe(
+      this.jsonServer.httpRequest('PUT', '/todos/' + action.payload.id, action.payload).pipe(
         map(() => {
           return new EditTodoSuccess(action.payload);
         }),

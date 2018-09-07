@@ -7,6 +7,9 @@ import { AddTodo, LoadTodos, DeleteTodo } from '../actions/todo.actions';
 import { Observable } from 'rxjs';
 import { Todo } from '../models/todo';
 
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { TodoModalComponent } from '../todo-modal/todo-modal.component'
+
 @Component({
   selector: 'app-todo-page',
   templateUrl: './todo-page.component.html',
@@ -15,12 +18,14 @@ import { Todo } from '../models/todo';
 export class TodoPageComponent implements OnInit {
   todoForm: FormGroup;
   submitted = false;
+  bsModalRef: BsModalRef;
 
   todos: Observable<Todo[]>;
 
   constructor(
     private store: Store<AppState>,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private modalService: BsModalService) {
     this.todos = this.store.select(state => state.todos);
   }
 
@@ -56,5 +61,12 @@ export class TodoPageComponent implements OnInit {
 
   deleteTodo(todo) {
     this.store.dispatch(new DeleteTodo(todo.id));
+  }
+
+  openEditModal(todo) {
+    const initialState = {
+      todo: todo,
+    };
+    this.bsModalRef = this.modalService.show(TodoModalComponent, { initialState });
   }
 }

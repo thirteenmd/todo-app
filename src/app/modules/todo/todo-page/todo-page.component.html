@@ -4,7 +4,7 @@
         (submit)="addTodo()">
 
     <div class="form-group">
-      <label for="name">Task name:</label>
+      <label for="name">Todo name:</label>
       <input formControlName="name"
              type="text"
              class="form-control"
@@ -93,9 +93,10 @@
             <button (click)="deleteTodo(todo)"
                     class="btn btn-danger">Delete</button>
           </td>
-          <!-- <td>
-              <button (click)="openEditModal(task)" class="btn btn-success">Edit</button>
-            </td> -->
+          <td>
+            <button (click)="openEditModal(todo)"
+                    class="btn btn-success">Edit</button>
+          </td>
         </div>
       </div>
     </div>
