@@ -54,7 +54,7 @@ export class TodoPageComponent implements OnInit {
     this.store.dispatch(new LoadTodos());
   }
 
-  deleteTodo(todoId) {
-    this.store.dispatch(new DeleteTodo(todoId));
+  deleteTodo(todo) {
+    this.store.dispatch(new DeleteTodo(todo.id));
   }
 }

@@ -68,7 +68,7 @@
 
 
     <div class="col-sm-4 card"
-         *ngFor="let todo of todos | async, let i = index">
+         *ngFor="let todo of todos | async">
       <div class="panel">
         <div class="card-body"
              id='todoDiv'>
@@ -90,7 +90,7 @@
             {{todo.finishedAt}}
           </p>
           <td>
-            <button (click)="deleteTodo(i)"
+            <button (click)="deleteTodo(todo)"
                     class="btn btn-danger">Delete</button>
           </td>
           <!-- <td>
