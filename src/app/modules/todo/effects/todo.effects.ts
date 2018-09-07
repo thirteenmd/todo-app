@@ -7,7 +7,6 @@ import { HttpClient } from '@angular/common/http';
 
 import { BackendService } from '../../../core/services/backend.service';
 
-import { environment } from '../../../../environments/environment';
 import {
   TodoActionTypes,
   AddTodo,

@@ -1,5 +1,4 @@
 <div class="container">
-  <h1>Add new todo</h1>
   <form [formGroup]="todoForm"
         (submit)="addTodo()">
 
@@ -41,7 +40,7 @@
     </button>
   </form>
 
-  <div class="form-group row"
+  <div class="form-group row todo-list"
        *ngIf="todos; else noTodos">
 
     <!-- <div class="btn-group btn-group-justified"
@@ -67,7 +66,7 @@
     </div> -->
 
 
-    <div class="col-sm-4 card"
+    <div class="col-sm-6 card"
          *ngFor="let todo of todos | async">
       <div class="panel">
         <div class="card-body"
@@ -96,6 +95,10 @@
           <td>
             <button (click)="openEditModal(todo)"
                     class="btn btn-success">Edit</button>
+          </td>
+          <td *ngIf="!todo.finished"> 
+            <button (click)="markDone(todo)"
+                    class="btn btn-success">Mark Done</button>
           </td>
         </div>
       </div>

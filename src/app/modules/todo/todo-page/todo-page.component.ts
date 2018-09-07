@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AppState } from '../todo.state';
-import { AddTodo, LoadTodos, DeleteTodo } from '../actions/todo.actions';
+import { AddTodo, LoadTodos, DeleteTodo, EditTodo } from '../actions/todo.actions';
 import { Observable } from 'rxjs';
 import { Todo } from '../models/todo';
 
@@ -68,5 +68,11 @@ export class TodoPageComponent implements OnInit {
       todo: todo,
     };
     this.bsModalRef = this.modalService.show(TodoModalComponent, { initialState });
+  }
+
+  markDone(todo) {
+    todo.finished = true;
+    todo.finishedAt = new Date();
+    this.store.dispatch(new EditTodo(todo));
   }
 }
