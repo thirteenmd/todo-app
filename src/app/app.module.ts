@@ -1,9 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { appRoutes } from './app.routes';
+
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+
+import { TodoEffects } from './modules/todo/effects/todo.effects';
+import { todoReducer } from './modules/todo/reducers/todo.reducer';
 
 @NgModule({
   declarations: [
@@ -12,7 +19,12 @@ import { appRoutes } from './app.routes';
   imports: [
     BrowserModule,
     appRoutes,
-    CoreModule
+    CoreModule,
+    HttpClientModule,
+    StoreModule.forRoot({
+      todos: todoReducer
+    }),
+    EffectsModule.forRoot([TodoEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,56 +1,41 @@
-import { Action } from '@ngrx/store';
-import { TodoActionsUnion, TodoActionTypes } from '../actions/todo.actions';
 import { Todo } from '../models/todo';
+import { TodoActionTypes } from '../actions/todo.actions'
 
-export interface State {
-  loaded: boolean,
-  loading: boolean,
-  todos: Todo[]
+export function todoReducer(state: Todo[] = [], action) {
+  switch (action.type) {
+    case TodoActionTypes.LoadTodos:
+      return [...state]
+    case TodoActionTypes.LoadTodosSuccess:
+      return [...state, ...action.payload]
+    case TodoActionTypes.AddTodo:
+      return [...state]
+    case TodoActionTypes.AddTodoSuccess:
+      return [...state, ...action.payload]
+    case TodoActionTypes.DeleteTodo:
+      return [...state]
+    case TodoActionTypes.DeleteTodoSuccess:
+      return deleteTodo(state, action)
+    case TodoActionTypes.EditTodo:
+      return [...state]
+    case TodoActionTypes.EditTodoSuccess:
+      return updateTodo(state, action)
+    default:
+      return state
+  }
 }
 
-export const initialState: State = {
-  loaded: false,
-  loading: false,
-  todos: []
-};
+function deleteTodo(todos, action) {
+  return todos.filter(todo => todo.id !== action.payload);
+}
 
-export function reducer(state = initialState, action: Action): State {
-  switch (action.type) {
-
-    case TodoActionTypes.LoadTodos: {
-      return {
-        ...state,
-        loading: true
-      };
+function updateTodo(todos, action) {
+  return todos.map((todo) => {
+    if (todo.id !== action.payload.currentItem.id) {
+      return todo
     }
-    case TodoActionTypes.LoadTodosSuccess: {
-      return {
-        loaded: true,
-        loading: false,
-        todos: action.payload
-      }
+    return {
+      ...todo,
+      ...action.payload.updatedTodo
     }
-    case TodoActionTypes.AddTodoSuccess:
-    case TodoActionTypes.DeleteTodoFail: {
-      if (state.todos.find(action.payload)) {
-        return state;
-      }
-
-      return {
-        ...state,
-        todos: [...state.todos, action.paylaod]
-      }
-    }
-
-    case TodoActionTypes.DeleteTodoSuccess:
-    case TodoActionTypes.AddTodoFail: {
-      return {
-        ...state,
-        todos: state.todos.filter(todo => todo !== action.payload)
-      }
-    }
-
-    default:
-      return state;
-  }
+  })
 }

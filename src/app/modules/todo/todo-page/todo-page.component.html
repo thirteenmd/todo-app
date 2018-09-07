@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Add new todo</h1>
   <form [formGroup]="todoForm"
-        (submit)="onSubmit()">
+        (submit)="addTodo()">
 
     <div class="form-group">
       <label for="name">Task name:</label>
@@ -36,56 +36,74 @@
     </div>
 
     <button type="submit"
-            class="btn btn-primary">Submit</button>
+            [disabled]="todoForm.pristine || todoForm.invalid"
+            class="btn btn-primary">Add Todo
+    </button>
   </form>
 
-  <form>
-    <div class="form-group row"
-         *ngIf="todos.length > 0; else noTodos">
-      <div class="btn-group btn-group-justified"
+  <div class="form-group row"
+       *ngIf="todos; else noTodos">
+
+    <!-- <div class="btn-group btn-group-justified"
+         role="group">
+      <div class="btn-group"
            role="group">
-        <div class="btn-group"
-             role="group">
-          <button type="button"
-                  class="btn btn-default"
-                  (click)="showAll()">Show All</button>
-        </div>
-        <div class="btn-group"
-             role="group">
-          <button type="button"
-                  class="btn btn-default"
-                  (click)="showDone()">Show Done</button>
-        </div>
-        <div class="btn-group"
-             role="group">
-          <button type="button"
-                  class="btn btn-default"
-                  (click)="showNotDone()">Show Not Done</button>
-        </div>
+        <button type="button"
+                class="btn btn-default"
+                (click)="showAll()">Show All</button>
       </div>
-      <div class="col-sm-4 card"
-           *ngFor="let todo of todos">
-        <div class="panel">
-          <div class="card-body"
-               id='todoDiv'>
-            <i class="card-img-top material-icons">turned_in_not</i>
-            <h5 class="card-title">
-              <b>Todo:</b>
-              {{todo.name}}
-            </h5>
-            <p class="card-text">
-              <b>Finished:</b>
-              {{todo.finished}}
-            </p>
-            <a [routerLink]="['/todo', todo.id]"
-               class="btn btn-primary">View details</a>
-          </div>
+      <div class="btn-group"
+           role="group">
+        <button type="button"
+                class="btn btn-default"
+                (click)="showDone()">Show Done</button>
+      </div>
+      <div class="btn-group"
+           role="group">
+        <button type="button"
+                class="btn btn-default"
+                (click)="showNotDone()">Show Not Done</button>
+      </div>
+    </div> -->
+
+
+    <div class="col-sm-4 card"
+         *ngFor="let todo of todos | async, let i = index">
+      <div class="panel">
+        <div class="card-body"
+             id='todoDiv'>
+          <h5 class="card-title">
+            <b>Todo:</b>
+            {{todo.name}}
+          </h5>
+          <p class="card-text">
+            <b>Description:</b>
+            {{todo.description}}
+          </p>
+          <p class="card-text">
+            <b>Finished:</b>
+            {{todo.finished}}
+          </p>
+          <p class="card-text"
+             *ngIf="todo.finished">
+            <b>FinishedAt:</b>
+            {{todo.finishedAt}}
+          </p>
+          <td>
+            <button (click)="deleteTodo(i)"
+                    class="btn btn-danger">Delete</button>
+          </td>
+          <!-- <td>
+              <button (click)="openEditModal(task)" class="btn btn-success">Edit</button>
+            </td> -->
         </div>
       </div>
     </div>
+  </div>
 
-    <ng-template #noTodos>
-      <h2>No todos to show :(</h2>
-    </ng-template>
-  </form>
+
+
+  <ng-template #noTodos>
+    <h2>No todos to show :(</h2>
+  </ng-template>
 </div>

@@ -1,5 +1,11 @@
+import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { AppState } from '../todo.state';
+import { AddTodo, LoadTodos, DeleteTodo } from '../actions/todo.actions';
+import { Observable } from 'rxjs';
+import { Todo } from '../models/todo';
 
 @Component({
   selector: 'app-todo-page',
@@ -9,11 +15,24 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class TodoPageComponent implements OnInit {
   todoForm: FormGroup;
   submitted = false;
-  todos = [];
 
-  constructor(private formBuilder: FormBuilder) { }
+  todos: Observable<Todo[]>;
+
+  constructor(
+    private store: Store<AppState>,
+    private formBuilder: FormBuilder) {
+    this.todos = this.store.select(state => state.todos);
+  }
 
   ngOnInit() {
+    this.initForm();
+    this.getTodos();
+    this.store.subscribe(res => {
+      console.log(res)
+    });
+  }
+
+  initForm() {
     this.todoForm = this.formBuilder.group({
       id: null,
       name: ['', [Validators.required]],
@@ -27,4 +46,15 @@ export class TodoPageComponent implements OnInit {
     return this.todoForm.controls;
   }
 
+  addTodo() {
+    this.store.dispatch(new AddTodo(this.todoForm.value));
+  }
+
+  getTodos() {
+    this.store.dispatch(new LoadTodos());
+  }
+
+  deleteTodo(todoId) {
+    this.store.dispatch(new DeleteTodo(todoId));
+  }
 }
