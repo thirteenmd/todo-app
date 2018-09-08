@@ -11,7 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
 import { TodoEffects } from './modules/todo/effects/todo.effects';
-import { todoReducer } from './modules/todo/reducers/todo.reducer';
+import { rootReducer } from './modules/todo/reducers/index.reducer';
 
 @NgModule({
   declarations: [
@@ -23,9 +23,7 @@ import { todoReducer } from './modules/todo/reducers/todo.reducer';
     CoreModule,
     HttpClientModule,
     ModalModule.forRoot(),
-    StoreModule.forRoot({
-      todos: todoReducer
-    }),
+    StoreModule.forRoot(rootReducer),
     EffectsModule.forRoot([TodoEffects])
   ],
   providers: [],
