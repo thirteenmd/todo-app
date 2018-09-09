@@ -1,5 +1,5 @@
 import { createSelector } from '@ngrx/store';
-import { AppState } from '../todo.state';
+import { AppState } from '../reducers';
 import { Todo } from '../models/todo';
 import * as FilterValues from '../../../shared/constants/visibility-filter';
 

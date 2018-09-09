@@ -35,41 +35,6 @@
     </div>
   </div>
 
-  <div class="form-group row top-padded" *ngIf="todos; else noTodos">
-    <div class="col-sm-6 col-s-12 card" *ngFor="let todo of todos ">
-      <div class="panel">
-        <div class="card-body" id='todoDiv'>
-          <h5 class="card-title">
-            <b>Todo:</b>
-            {{todo.name}}
-          </h5>
-          <p class="card-text">
-            <b>Description:</b>
-            {{todo.description}}
-          </p>
-          <p class="card-text">
-            <b>Finished:</b>
-            {{todo.finished}}
-          </p>
-          <p class="card-text" *ngIf="todo.finished">
-            <b>FinishedAt:</b>
-            {{todo.finishedAt}}
-          </p>
-          <td>
-            <button (click)="deleteTodo(todo)" class="btn btn-danger">Delete</button>
-          </td>
-          <td>
-            <button (click)="openEditModal(todo)" class="btn btn-success">Edit</button>
-          </td>
-          <td *ngIf="!todo.finished">
-            <button (click)="markDone(todo)" class="btn btn-primary">Mark Done</button>
-          </td>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <ng-template #noTodos>
-    <h2>No todos to show :(</h2>
-  </ng-template>
+  <app-todo-list></app-todo-list>
+  
 </div>

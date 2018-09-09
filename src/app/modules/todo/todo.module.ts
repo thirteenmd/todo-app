@@ -7,7 +7,8 @@ import { ModalModule } from 'ngx-bootstrap';
 import { SharedModule } from '../../shared/shared.module';
 import { TodoPageComponent } from './todo-page/todo-page.component';
 import { TodoRoute } from './todo.routes';
-import { TodoModalComponent } from './todo-modal/todo-modal.component';
+import { TodoModalComponent } from './components/todo-modal/todo-modal.component';
+import { TodoListComponent } from './components/todo-list/todo-list.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import { TodoModalComponent } from './todo-modal/todo-modal.component';
     HttpClientModule,
     ModalModule.forRoot()
   ],
-  declarations: [TodoPageComponent, TodoModalComponent],
+  declarations: [TodoPageComponent, TodoModalComponent, TodoListComponent],
   entryComponents: [TodoModalComponent],
   exports: [TodoPageComponent]
 })
