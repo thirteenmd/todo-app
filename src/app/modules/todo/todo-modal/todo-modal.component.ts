@@ -43,4 +43,8 @@ export class TodoModalComponent implements OnInit {
     this.editTodoModalRef.hide();
   }
 
+  onClose() {
+    this.editTodoModalRef.hide();
+  }
+
 }

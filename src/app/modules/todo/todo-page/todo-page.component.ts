@@ -8,7 +8,8 @@ import { AddTodo, LoadTodos, DeleteTodo, EditTodo } from '../actions/todo.action
 import { Todo } from '../models/todo';
 import { TodoModalComponent } from '../todo-modal/todo-modal.component'
 import * as VisibilityFilterActions from '../actions/visibility-filter.actions';
-import { getVisibleTodos, getVisibilityFilter } from '../selectors/todo.selectors'
+import { getVisibleTodos, getVisibilityFilter } from '../selectors/todo.selectors';
+import * as FilterValues from '../../../shared/constants/visibility-filter';
 
 @Component({
   selector: 'app-todo-page',
@@ -17,8 +18,7 @@ import { getVisibleTodos, getVisibilityFilter } from '../selectors/todo.selector
 })
 export class TodoPageComponent implements OnInit {
   todoForm: FormGroup;
-  submitted = false;
-  bsModalRef: BsModalRef;
+  editTodoModalRef: BsModalRef;
 
   todos: Todo[];
   todosFilter: string;
@@ -40,9 +40,9 @@ export class TodoPageComponent implements OnInit {
   ngOnInit() {
     this.initForm();
     this.getTodos();
-    this.store.subscribe(res => {
-      console.log(res)
-    });
+    // this.store.subscribe(res => {
+    //   console.log(res)
+    // });
   }
 
   initForm() {
@@ -76,7 +76,7 @@ export class TodoPageComponent implements OnInit {
     const initialState = {
       todo: todo,
     };
-    this.bsModalRef = this.modalService.show(TodoModalComponent, { initialState });
+    this.editTodoModalRef = this.modalService.show(TodoModalComponent, { initialState });
   }
 
   markDone(todo) {
@@ -88,19 +88,17 @@ export class TodoPageComponent implements OnInit {
   setVisibilityFilter(filter) {
     switch (filter) {
       case 'finished': {
-        this.store.dispatch(new VisibilityFilterActions.SetVisibilityFilter('SHOW_FINISHED'));
+        this.store.dispatch(new VisibilityFilterActions.SetVisibilityFilter(FilterValues.SHOW_FINISHED));
         break;
       }
       case 'notFinished': {
-        this.store.dispatch(new VisibilityFilterActions.SetVisibilityFilter('SHOW_NOT_FINISHED'));
+        this.store.dispatch(new VisibilityFilterActions.SetVisibilityFilter(FilterValues.SHOW_NOT_FINISHED));
         break;
       }
       default: {
-        this.store.dispatch(new VisibilityFilterActions.SetVisibilityFilter('SHOW_ALL'));
+        this.store.dispatch(new VisibilityFilterActions.SetVisibilityFilter(FilterValues.SHOW_ALL));
         break;
       }
     }
   }
-
-
 }

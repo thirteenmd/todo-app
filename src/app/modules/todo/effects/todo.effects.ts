@@ -3,7 +3,6 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 import { Action } from '@ngrx/store';
-import { HttpClient } from '@angular/common/http';
 
 import { BackendService } from '../../../core/services/backend.service';
 
