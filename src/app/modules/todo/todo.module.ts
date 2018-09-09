@@ -9,6 +9,7 @@ import { TodoPageComponent } from './todo-page/todo-page.component';
 import { TodoRoute } from './todo.routes';
 import { TodoModalComponent } from './components/todo-modal/todo-modal.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
+import { VisibilityFilterComponent } from './components/visibility-filter/visibility-filter.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,7 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
     HttpClientModule,
     ModalModule.forRoot()
   ],
-  declarations: [TodoPageComponent, TodoModalComponent, TodoListComponent],
+  declarations: [TodoPageComponent, TodoModalComponent, TodoListComponent, VisibilityFilterComponent],
   entryComponents: [TodoModalComponent],
   exports: [TodoPageComponent]
 })
