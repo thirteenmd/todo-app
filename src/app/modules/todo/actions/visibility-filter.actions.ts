@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-export const SetFilter = '[Todo] [VisibilityFilter] Set Visibility Filter';
+export const SetFilter = '[VisibilityFilter] Set Visibility Filter';
 
 export class SetVisibilityFilter implements Action {
   readonly type = SetFilter;

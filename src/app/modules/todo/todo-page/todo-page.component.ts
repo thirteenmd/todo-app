@@ -34,10 +34,6 @@ export class TodoPageComponent implements OnInit {
     });
   }
 
-  get f() {
-    return this.todoForm.controls;
-  }
-
   get name() {
     return this.todoForm.controls.name;
   }
