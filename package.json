@@ -23,7 +23,6 @@
     "@ngrx/effects": "^6.1.0",
     "@ngrx/router-store": "^6.1.0",
     "@ngrx/store": "^6.1.0",
-    "@ngrx/store-devtools": "^3.2.4",
     "adm-zip": "^0.4.11",
     "better-assert": "^1.0.2",
     "bootstrap": "^4.1.3",
