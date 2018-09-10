@@ -4,11 +4,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AppState } from '../reducers';
 import { AddTodo } from '../actions/todo.actions';
+import { generateId } from '../../../shared/utils/id-generator';
 
 @Component({
   selector: 'app-todo-page',
-  templateUrl: './todo-page.component.html',
-  styleUrls: ['./todo-page.component.css']
+  templateUrl: './todo-page.component.html'
 })
 export class TodoPageComponent implements OnInit {
   todoForm: FormGroup;
@@ -20,13 +20,13 @@ export class TodoPageComponent implements OnInit {
   ngOnInit() {
     this.initForm();
     this.store.subscribe(res => {
-      console.log(res)
+      console.log(res);
     });
   }
 
   initForm() {
     this.todoForm = this.formBuilder.group({
-      id: Math.floor(Math.random() * Math.floor(100000)),
+      id: generateId(),
       name: ['', [Validators.required]],
       finished: false,
       finishedAt: null,
@@ -36,6 +36,14 @@ export class TodoPageComponent implements OnInit {
 
   get f() {
     return this.todoForm.controls;
+  }
+
+  get name() {
+    return this.todoForm.controls.name;
+  }
+
+  get description() {
+    return this.todoForm.controls.description;
   }
 
   addTodo() {

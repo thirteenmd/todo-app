@@ -8,8 +8,7 @@ import { EditTodo } from '../../actions/todo.actions';
 
 @Component({
   selector: 'app-todo-modal',
-  templateUrl: './todo-modal.component.html',
-  styleUrls: ['./todo-modal.component.css']
+  templateUrl: './todo-modal.component.html'
 })
 export class TodoModalComponent implements OnInit {
 

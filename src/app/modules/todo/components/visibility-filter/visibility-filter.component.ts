@@ -8,8 +8,7 @@ import * as FilterValues from '../../../../shared/constants/visibility-filter';
 
 @Component({
   selector: 'app-visibility-filter',
-  templateUrl: './visibility-filter.component.html',
-  styleUrls: ['./visibility-filter.component.css']
+  templateUrl: './visibility-filter.component.html'
 })
 export class VisibilityFilterComponent implements OnInit {
   todosFilter: string;
@@ -19,7 +18,7 @@ export class VisibilityFilterComponent implements OnInit {
       .subscribe(todos => {
         this.todosFilter = todos;
       });
-   }
+  }
 
   ngOnInit() {
   }

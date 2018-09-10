@@ -1,26 +1,26 @@
 import { Todo } from '../models/todo';
-import { TodoActionTypes } from '../actions/todo.actions'
+import { TodoActionTypes } from '../actions/todo.actions';
 
 export function todoReducer(state: Todo[] = [], action) {
   switch (action.type) {
     case TodoActionTypes.LoadTodos:
-      return [...state]
+      return [...state];
     case TodoActionTypes.LoadTodosSuccess:
-      return [...state, ...action.payload]
+      return [...state, ...action.payload];
     case TodoActionTypes.AddTodo:
-      return [...state]
+      return [...state];
     case TodoActionTypes.AddTodoSuccess:
-      return [...state, ...action.payload]
+      return [...state, ...action.payload];
     case TodoActionTypes.DeleteTodo:
-      return [...state]
+      return [...state];
     case TodoActionTypes.DeleteTodoSuccess:
-      return deleteTodo(state, action)
+      return deleteTodo(state, action);
     case TodoActionTypes.EditTodo:
-      return [...state]
+      return [...state];
     case TodoActionTypes.EditTodoSuccess:
-      return updateTodo(state, action)
+      return updateTodo(state, action);
     default:
-      return state
+      return state;
   }
 }
 
@@ -31,11 +31,11 @@ function deleteTodo(todos, action) {
 function updateTodo(todos, action) {
   return todos.map((todo) => {
     if (todo.id !== action.payload.id) {
-      return todo
+      return todo;
     }
     return {
       ...todo,
       ...action.payload
-    }
-  })
+    };
+  });
 }

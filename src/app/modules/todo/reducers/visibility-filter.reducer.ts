@@ -6,7 +6,7 @@ export function visibilityFilterReducer(state: String = 'SHOW_ALL', action: Filt
   }
   switch (action.type) {
     case FilterActions.SetFilter: {
-      return action.payload
+      return action.payload;
     }
     default:
       return state;
