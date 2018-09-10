@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 import { AppState } from '../../reducers';
@@ -18,10 +18,8 @@ export class TodoListComponent implements OnInit {
 
   constructor(private store: Store<AppState>,
     private modalService: BsModalService) {
-    this.store.select(getVisibleTodos)
-      .subscribe(todos => {
-        this.todos = todos;
-      });
+    this.store.pipe(select(getVisibleTodos))
+      .subscribe(todos => this.todos = todos);
   }
 
   ngOnInit() {
