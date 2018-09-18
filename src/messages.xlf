@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="todoName" datatype="html">
+        <source>Todo name:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/todo/todo-page/todo-page.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/todo/components/todo-modal/todo-modal.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <note priority="1" from="description"> name of the task</note>
+        <note priority="1" from="meaning">name </note>
+      </trans-unit>
+      <trans-unit id="todoDescription" datatype="html">
+        <source>Description:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/todo/todo-page/todo-page.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/todo/components/todo-modal/todo-modal.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <note priority="1" from="description"> description of the task</note>
+        <note priority="1" from="meaning">description </note>
+      </trans-unit>
+      <trans-unit id="todoNameRequired" datatype="html">
+        <source>Name is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/todo/components/todo-modal/todo-modal.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <note priority="1" from="description"> name required message</note>
+        <note priority="1" from="meaning">nameRequired </note>
+      </trans-unit>
+      <trans-unit id="todoDescriptionRequired" datatype="html">
+        <source>Description is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/todo/components/todo-modal/todo-modal.component.html</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <note priority="1" from="description"> description required message</note>
+        <note priority="1" from="meaning">descriptionRequired </note>
+      </trans-unit>
+      <trans-unit id="todoeditButton" datatype="html">
+        <source>Edit Todo
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/todo/components/todo-modal/todo-modal.component.html</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+        <note priority="1" from="description"> name of the edit button</note>
+        <note priority="1" from="meaning">edit Todo Button </note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

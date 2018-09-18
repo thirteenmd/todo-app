@@ -5,12 +5,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppState } from '../reducers';
 import { AddTodo } from '../actions/todo.actions';
 import { generateId } from '../../../shared/utils/id-generator';
+import { add } from 'ngx-bootstrap/chronos';
 
 @Component({
   selector: 'app-todo-page',
   templateUrl: './todo-page.component.html'
 })
 export class TodoPageComponent implements OnInit {
+  submitted: boolean = false;
   todoForm: FormGroup;
 
   constructor(private store: Store<AppState>,
@@ -45,5 +47,10 @@ export class TodoPageComponent implements OnInit {
   addTodo() {
     this.store.dispatch(new AddTodo(this.todoForm.value));
     this.todoForm.reset();
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    this.addTodo();
   }
 }

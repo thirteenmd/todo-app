@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap';
 import { Store } from '@ngrx/store';
 
@@ -11,7 +11,7 @@ import { EditTodo } from '../../actions/todo.actions';
   templateUrl: './todo-modal.component.html'
 })
 export class TodoModalComponent implements OnInit {
-
+  submitted: boolean = false;
   editForm: FormGroup;
 
   todo;
@@ -33,8 +33,12 @@ export class TodoModalComponent implements OnInit {
     });
   }
 
-  get f() {
-    return this.editForm.controls;
+  get name() {
+    return this.editForm.controls.name;
+  }
+
+  get description() {
+    return this.editForm.controls.description;
   }
 
   editTodo() {
@@ -44,6 +48,11 @@ export class TodoModalComponent implements OnInit {
 
   onClose() {
     this.editTodoModalRef.hide();
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    this.editTodo();
   }
 
 }
