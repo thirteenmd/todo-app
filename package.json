@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:es": "ng serve --aot --i18nFile=src/locale/messages.es.xlf --i18nFormat=xlf --locale es",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -23,7 +24,6 @@
     "@ngrx/effects": "^6.1.0",
     "@ngrx/router-store": "^6.1.0",
     "@ngrx/store": "^6.1.0",
-    "@ngrx/store-devtools": "^3.2.4",
     "adm-zip": "^0.4.11",
     "better-assert": "^1.0.2",
     "bootstrap": "^4.1.3",

@@ -64,14 +64,3 @@ export class RequestFeiled implements Action {
   constructor(public payload: any) {
   }
 }
-
-export type TodoActionsUnion =
-  | AddTodo
-  | AddTodoSuccess
-  | DeleteTodo
-  | DeleteTodoSuccess
-  | LoadTodos
-  | LoadTodosSuccess
-  | EditTodo
-  | EditTodoSuccess
-  | RequestFeiled;

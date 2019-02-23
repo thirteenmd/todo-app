@@ -1,7 +1,9 @@
-<div class="form-group row top-padded" *ngIf="todos; else noTodos">
-  <div class="col-sm-6 col-s-12 card" *ngFor="let todo of todos ">
+<div class="form-group row top-padded"
+     *ngIf="todos; else noTodos">
+  <div class="col-sm-6 col-s-12 card"
+       *ngFor="let todo of todos ">
     <div class="panel">
-      <div class="card-body" id='todoDiv'>
+      <div class="card-body">
         <h5 class="card-title">
           <b>Todo:</b>
           {{todo.name}}
@@ -14,19 +16,18 @@
           <b>Finished:</b>
           {{todo.finished}}
         </p>
-        <p class="card-text" *ngIf="todo.finished">
-          <b>FinishedAt:</b>
+        <p class="card-text"
+           *ngIf="todo.finished">
+          <b>Finished At:</b>
           {{todo.finishedAt}}
         </p>
-        <td>
-          <button (click)="deleteTodo(todo)" class="btn btn-danger">Delete</button>
-        </td>
-        <td>
-          <button (click)="openEditModal(todo)" class="btn btn-success">Edit</button>
-        </td>
-        <td *ngIf="!todo.finished">
-          <button (click)="markDone(todo)" class="btn btn-primary">Mark Done</button>
-        </td>
+        <button (click)="deleteTodo(todo)"
+                class="btn btn-danger mt-2 mb-2 mr-2">Delete</button>
+        <button (click)="openEditModal(todo)"
+                class="btn btn-success mt-2 mb-2 mr-2">Edit</button>
+        <button (click)="markDone(todo)"
+                class="btn btn-primary mt-2 mb-2 mr-2"
+                *ngIf="!todo.finished">Mark Done</button>
       </div>
     </div>
   </div>

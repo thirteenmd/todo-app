@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 import { AppState } from '../../reducers';
-import { LoadTodos,DeleteTodo, EditTodo } from '../../actions/todo.actions';
+import { LoadTodos, DeleteTodo, EditTodo } from '../../actions/todo.actions';
 import { Todo } from '../../models/todo';
 import { getVisibleTodos } from '../../selectors/todo.selectors';
 import { TodoModalComponent } from '../todo-modal/todo-modal.component';
 
 @Component({
   selector: 'app-todo-list',
-  templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.css']
+  templateUrl: './todo-list.component.html'
 })
 export class TodoListComponent implements OnInit {
   todos: Todo[];
@@ -19,11 +18,9 @@ export class TodoListComponent implements OnInit {
 
   constructor(private store: Store<AppState>,
     private modalService: BsModalService) {
-    this.store.select(getVisibleTodos)
-      .subscribe(todos => {
-        this.todos = todos;
-      });
-   }
+    this.store.pipe(select(getVisibleTodos))
+      .subscribe(todos => this.todos = todos);
+  }
 
   ngOnInit() {
     this.getTodos();
